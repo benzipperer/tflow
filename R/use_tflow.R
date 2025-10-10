@@ -3,12 +3,27 @@
 ##' Creates files and directories according to the tflow template.
 ##'
 ##' @title use_tflow
+##' @param dsl Type of pipeline domain-specific language: the default is `"tar_assign"`
+#' 
+#'   A targets pipeline contains a collection of targets defined by a particular syntax:
+#'   * `"tar_assign"`: the assignment-based syntax [tarchetypes::tar_assign()] 
+#'   * `"tar_plan"`: the Drake-style plan-based syntax [tarchetypes::tar_plan()]
+#'   * `"targets"`: the targets-style [list()] syntax
 ##' @return Nothing. Modifies your workspace.
 ##' @export
-use_tflow <- function(){
+use_tflow <- function(dsl = c("tar_assign", "tar_plan", "targets")){
+  dsl <- match.arg(dsl)
+
+  pipeline_data <- switch(
+    dsl,
+    "tar_assign" = pipeline_template_data_tar_assign(),
+    "tar_plan" = pipeline_template_data_tar_plan(),
+    "targets" = pipeline_template_data_targets()
+  )
+
   usethis::use_directory("R")
   usethis::use_template("packages.R", package = "tflow")
-  usethis::use_template("_targets.R", package = "tflow")
+  usethis::use_template("_targets.R", package = "tflow", data = list(Pipeline = pipeline_data))
   usethis::use_template(".env", package = "tflow")
 }
 
