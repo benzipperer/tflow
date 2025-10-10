@@ -4,7 +4,17 @@
 \alias{use_tflow}
 \title{use_tflow}
 \usage{
-use_tflow()
+use_tflow(dsl = c("tar_assign", "tar_plan", "targets"))
+}
+\arguments{
+\item{dsl}{Type of pipeline domain-specific language: the default is \code{"tar_assign"}
+
+A targets pipeline contains a collection of targets defined by a particular syntax:
+\itemize{
+\item \code{"tar_assign"}: the assignment-based syntax \code{\link[tarchetypes:tar_assign]{tarchetypes::tar_assign()}}
+\item \code{"tar_plan"}: the Drake-style plan-based syntax \code{\link[tarchetypes:tar_plan]{tarchetypes::tar_plan()}}
+\item \code{"targets"}: the targets-style \code{\link[=list]{list()}} syntax
+}}
 }
 \value{
 Nothing. Modifies your workspace.
