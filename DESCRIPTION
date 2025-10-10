@@ -27,11 +27,12 @@ Suggests:
     capsule,
     dotenv,
     targets,
-    tarchetypes,
+    tarchetypes (>= 0.10.0),
     withr,
     here
 Remotes:
     milesmcbain/fnmate,
     milesmcbain/capsule,
     milesmcbain/atcursor
-RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
