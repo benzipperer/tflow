@@ -65,7 +65,7 @@ rs_make_target_at_cursor <- function(shortcut = FALSE) {
   eval(command)
 }
 
-#' @export
+#' @noRd
 #'
 #' @export
 rs_invalidate_target_at_cursor <- function() {
